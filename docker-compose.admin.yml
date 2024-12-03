@@ -1,0 +1,21 @@
+version: '3.8'
+
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  admin:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    container_name: admin
+    depends_on:
+      - kafka1
+      - kafka2
+      - kafka3
+    restart: always
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network

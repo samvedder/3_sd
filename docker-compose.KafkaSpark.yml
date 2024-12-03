@@ -1,0 +1,24 @@
+version: '3.8'
+
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  kafka-spark:
+    build: ./kafka-spark
+    container_name: kafka-spark
+    depends_on:
+      - kafka1
+      - kafka2
+      - kafka3
+      - spark-master
+      - spark-worker-1
+      - cassandra
+      - elasticsearch
+      - kibana
+    restart: always
+    environment:
+      - SPARK_MASTER=spark://spark-master:7077
+    networks:
+      - app-network

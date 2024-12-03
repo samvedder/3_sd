@@ -1,0 +1,31 @@
+version: '3.8'
+
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  cassandra:
+    build:
+      context: .
+      dockerfile: cassandra/Dockerfile
+    container_name: cassandra
+    environment:
+      - CASSANDRA_CLUSTER_NAME=DistributedSystem
+      - CASSANDRA_NUM_TOKENS=256
+      - CASSANDRA_RPC_ADDRESS=0.0.0.0
+      - CASSANDRA_START_RPC=true
+    networks:
+      - app-network
+    ports:
+      - "9042:9042"  # Puerto para CQL
+      - "7199:7199"  # Puerto para JMX
+    volumes:
+      - cassandra-data:/var/lib/cassandra
+      - cassandra-commitlog:/var/lib/cassandra/commitlog
+
+volumes:
+  cassandra-data:
+    driver: local
+  cassandra-commitlog:
+    driver: local

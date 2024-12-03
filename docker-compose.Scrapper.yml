@@ -1,0 +1,20 @@
+version: '3.8'
+
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  scrapper:
+    build:
+      context: ./scrapper
+      dockerfile: Dockerfile
+    container_name: scrapper
+    networks:
+      - app-network
+    depends_on:
+      - kafka1
+      - kafka2
+      - kafka3
+    volumes:
+      - ./scrapper:/app
