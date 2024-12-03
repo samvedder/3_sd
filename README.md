@@ -7,7 +7,6 @@ Este proyecto tiene como objetivo implementar un sistema distribuido para monito
 Asegúrate de tener instalados los siguientes componentes antes de ejecutar el proyecto:
 - Docker y Docker Compose
 - Python 3.9 o superior
-- Acceso a Git para la clonación del repositorio
 
 ## Estructura del Proyecto
 - **Admin**: Configuración de tópicos en Kafka.
@@ -15,8 +14,6 @@ Asegúrate de tener instalados los siguientes componentes antes de ejecutar el p
 - **DB-Init**: Scripts de inicialización para Cassandra.
 - **Kafka-Spark**: Procesamiento en tiempo real entre Kafka y Spark.
 - **Scrapper**: Extracción de datos en tiempo real desde Waze.
-- **Spark-Cassandra**: Integración entre Spark y Cassandra.
-- **Spark-Elasticsearch**: Procesamiento y almacenamiento de datos en Elasticsearch.
 
 ## Comandos para levantar los servicios
 1. **Levantar toda la infraestructura:**
@@ -45,4 +42,4 @@ Asegúrate de tener instalados los siguientes componentes antes de ejecutar el p
    SELECT * FROM alerts;
    ```
 ## Testeo
-Para verificar si todo esta en orden, ingresar a localhost:5601 para ver que funcione correctamente el index de elastic y localhost:8090 para kafka.
+Para verificar si todo esta en orden, ingresar a localhost:5601 para ver que funcione correctamente el index en kibana y localhost:8090 para kafka.
